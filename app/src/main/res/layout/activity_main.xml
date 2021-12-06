@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/start">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/headLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:textColor="#000000"
+        android:text="PicK A LeveL"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/easyButtun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="EASY"
+        app:layout_constraintEnd_toEndOf="@+id/headLine"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="@+id/headLine"
+        app:layout_constraintTop_toTopOf="@+id/headLine" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/hardButtun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="HARD"
+        app:layout_constraintEnd_toEndOf="@+id/easyButtun"
+        app:layout_constraintStart_toStartOf="@+id/easyButtun"
+        app:layout_constraintTop_toBottomOf="@+id/easyButtun" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/topTen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="248dp"
+        android:text="Top Ten"
+        app:layout_constraintEnd_toEndOf="@+id/headLine"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/headLine"
+        app:layout_constraintTop_toTopOf="@+id/headLine">
+
+    </com.google.android.material.button.MaterialButton>
+</androidx.constraintlayout.widget.ConstraintLayout>

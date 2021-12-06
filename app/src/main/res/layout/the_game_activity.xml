@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TheGameActivity"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/sky">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <!--          android:layout_weight="1"-->
+            <TextView
+                android:id="@+id/panel_textView"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:text="TextView" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_heart1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_heart2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/heart" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_heart3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/heart" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace2"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace3"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace4"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace5"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace6"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace7"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace8"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace9"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace10"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace11"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace12"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace13"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace14"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace15"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace16"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace17"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace18"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace19"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace20"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace21"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace22"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace23"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace24"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace25"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace26"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace27"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace28"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace29"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rockPlace30"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/rock" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_Rocket1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rocket" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_Rocket2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rocket" />
+
+
+            <ImageView
+                android:id="@+id/panel_IMG_Rocket3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rocket" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_Rocket4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rocket" />
+
+
+            <ImageView
+                android:id="@+id/panel_IMG_Rocket5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                android:layout_weight="2"
+                app:srcCompat="@drawable/rocket" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/panel_IMG_lArrow"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/left_arrow" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_speed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/bunny"/>
+
+            <ImageView
+                android:id="@+id/panel_IMG_lView"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_rArrow"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/right_arrow" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
