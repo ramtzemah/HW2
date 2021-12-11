@@ -1,52 +1,33 @@
 package com.example.hw2;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.media.MediaActionSound;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class TheGameActivity extends AppCompatActivity {
     public static final String GAME_TYPE = "GAME_TYPE";
-    protected LocationManager locationManager;
     final int SIZEOFROUTE = 5;
     final int SIZEOFROWS = 6;
     private int DELAY = 750;
@@ -70,24 +51,21 @@ public class TheGameActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private Sensor accSensor;
     private String game_type = "";
-    private static MyDB myDB = new MyDB();
-    private FusedLocationProviderClient fusedLocationProviderClient;
-    String strlot = "";
-    String strlat = "";
+    private static MyDB myDB;
+    private String strlot = "";
+    private String strlat = "";
+    private float x = 0;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.the_game_activity);
 
-        initSensor();
-        findViews();
+       initSensor();
+       findViews();
 
 
-//          locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//          Location location = new com.example.hw2.Location(locationManager,TheGameActivity.this);
-//        Location location1 = new Location("gps");
-//        location.onLocationChanged(location1);
 
         Bundle extras = getIntent().getBundleExtra("Bundle");
         if (extras != null) {
@@ -102,6 +80,29 @@ public class TheGameActivity extends AppCompatActivity {
             hardGame();
         }
 
+
+
+//        SensorClass.CallBack_Move callBack_move = new SensorClass.CallBack_Move() {
+//            @Override
+//            public void dataReady(float t) {
+//                Log.d("pttt", "Moooooodel: "  + " Thread: " + Thread.currentThread().getName());
+//                x=t;
+//                move(x);
+//            }
+//        };
+//        SensorClass sensorClass =  new SensorClass(this);
+//        sensorClass.move(callBack_move);
+
+
+        LocationInCoordinate.CallBack_Loc callBack_loc = new LocationInCoordinate.CallBack_Loc() {
+            @Override
+            public void dataReady(String lag, String log) {
+                strlat = lag;
+                strlot = log;
+            }
+        };
+        LocationInCoordinate locationInCoordinate =  new LocationInCoordinate(this);
+        locationInCoordinate.getLastLocation(callBack_loc);
 
         panel_IMG_speed.setOnClickListener(v -> {
 
@@ -136,6 +137,29 @@ public class TheGameActivity extends AppCompatActivity {
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
+//    private void move(float x){
+//        for (int i = 0; i < SIZEOFROUTE; i++) {
+//                    rocketRoute[i] = 0;
+//                    rocketArray[i].setVisibility(View.INVISIBLE);
+//                }
+//                if (x >= 6) {
+//                    rocketRoute[0] = 1;
+//                } else if (x >= 2 && x < 6) {
+//                    rocketRoute[1] = 1;
+//                } else if (x <= 2 && x >= -2) {
+//                    rocketRoute[2] = 1;
+//                } else if (x > -6 && x < -2) {
+//                    rocketRoute[3] = 1;
+//                } else {
+//                    rocketRoute[4] = 1;
+//                }
+//                for (int i = 0; i < SIZEOFROUTE; i++) {
+//                    if (rocketRoute[i] == 1) {
+//                        rocketArray[i].setVisibility(View.VISIBLE);
+//                    }
+//                }
+//    }
+
     private SensorEventListener accSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -164,15 +188,6 @@ public class TheGameActivity extends AppCompatActivity {
                     }
                 }
             }
-//            if(x<-7){
-//                if(rocketRoute[SIZEOFROUTE-1]!=1)
-//                next(false);
-//            }else if (x>7){
-//                if(rocketRoute[0]!=1)
-//                next(true);
-//            }
-            // panel_textView.setText((int) x);
-
         }
 
         @Override
@@ -202,11 +217,6 @@ public class TheGameActivity extends AppCompatActivity {
     }
 
     private void startTicker() {
-//        TimeInSec timeInSec = new TimeInSec();
-//        timeInSec.timer(DELAY);
-//        checkHit();
-//        rocksMaker();
-//        startTicker();
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(ts = new TimerTask() {
             @Override
@@ -292,7 +302,6 @@ public class TheGameActivity extends AppCompatActivity {
         } else
             score += 200;
         panel_textView.setText("score: " + score);
-       // startTicker();
     }
 
     private void sound() {
@@ -304,28 +313,29 @@ public class TheGameActivity extends AppCompatActivity {
         //vibrate();
         if (panel_IMG_heart1.getVisibility() == View.VISIBLE) {
             panel_IMG_heart1.setVisibility(View.INVISIBLE);
-           // startTicker();
         } else if (panel_IMG_heart2.getVisibility() == View.VISIBLE) {
             panel_IMG_heart2.setVisibility(View.INVISIBLE);
-           // startTicker();
         } else {
             panel_IMG_heart3.setVisibility(View.INVISIBLE);
+            stopTicker();
             endMatch();
             finish();
         }
     }
 
     private void endMatch() {
-        String js = MSPV3.getMe().getString("MY_DB", "");
-        if (js != null) {
-            MyDB myDB = new Gson().fromJson(js, MyDB.class);
+
+        String js = MSPV.getMe().getString("MY_DB", "");
+        if (!js.equals("")) {
+            myDB = new Gson().fromJson(js, MyDB.class);
+        }else{
+            myDB =new MyDB();
         }
-        Location log = new Location("Netanya");
-        getLocation();
+
         if (myDB.getIn(score, strlot, strlat)) {
             Intent myIntent = new Intent(this, TopTenActivity.class);
             String json = new Gson().toJson(myDB);
-            MSPV3.getMe().putString("MY_DB", json);
+            MSPV.getMe().putString("MY_DB", json);
             Bundle bundle = new Bundle();
             bundle.putString(TopTenActivity.GAME_TYPE, game_type);
             myIntent.putExtra("Bundle", bundle);
@@ -420,8 +430,6 @@ public class TheGameActivity extends AppCompatActivity {
         panel_IMG_heart3 = findViewById(R.id.panel_IMG_heart3);
         panel_IMG_rArrow = findViewById(R.id.panel_IMG_rArrow);
         panel_IMG_lArrow = findViewById(R.id.panel_IMG_lArrow);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
     }
 
     @Override
@@ -451,61 +459,7 @@ public class TheGameActivity extends AppCompatActivity {
         super.onPause();
         sensorManager.unregisterListener(accSensorEventListener);
     }
-
-//    public void checkPermission(String permission, int requestCode)
-//    {
-//        if (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED) {
-//            // Requesting the permission
-//            ActivityCompat.requestPermissions(activity, new String[] { permission }, requestCode);
-//        }
-//        else {
-//            Toast.makeText(context, "Permission already granted", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
-    private void getLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
-    }
-
-
-
-
-
-
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           @NonNull String[] permissions,
-//                                           @NonNull int[] grantResults)
-//    {
-//        super.onRequestPermissionsResult(requestCode,
-//                permissions,
-//                grantResults);
-//
-//        if (requestCode == FINE_) {
-//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Toast.makeText(TheGameActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT) .show();
-//            }
-//            else {
-//                Toast.makeText(TheGameActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT) .show();
-//            }
-//        }
-//        else if (requestCode == STORAGE_PERMISSION_CODE) {
-//            if (grantResults.length > 0
-//                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Toast.makeText(TheGameActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(TheGameActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-  //  }
-
 }
+
+
+

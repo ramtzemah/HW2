@@ -42,8 +42,6 @@ public class Adapter_Record<recordItemClickListener> extends RecyclerView.Adapte
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         RecordViewHolder recordViewHolder = (RecordViewHolder) holder;
         Record record = getItem(position);
-        Log.d("pttt", "position= " + position);
-
         recordViewHolder.record_LBL_score.setText("" + record.getScore());
         recordViewHolder.record_LBL_lag.setText(record.getLat());
         recordViewHolder.record_LBL_log.setText(record.getLot());

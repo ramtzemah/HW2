@@ -14,10 +14,7 @@ private TimerTask ts;
         timer.scheduleAtFixedRate(ts = new TimerTask() {
             @Override
             public void run() {
-//                runOnUiThread(() -> {
-//                    checkHit();
-//                    rocksMaker();
-//                });
+//              |] });
             }
         }, 0, time);
     }

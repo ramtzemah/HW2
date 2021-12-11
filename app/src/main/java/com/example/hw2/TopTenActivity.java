@@ -2,14 +2,12 @@ package com.example.hw2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -46,8 +44,13 @@ public class TopTenActivity extends AppCompatActivity {
             gameType = extras.getString("GAME_TYPE");
         }
 
-
-        String js = MSPV3.getMe().getString("MY_DB", "");
+//  <ImageView
+//        android:layout_width="match_parent"
+//        android:layout_height="match_parent"
+//        android:layout_centerInParent="true"
+//        android:scaleType="centerCrop"
+//        android:src="@drawable/background2"/>
+        String js = MSPV.getMe().getString("MY_DB", "");
         MyDB myDB = new Gson().fromJson(js, MyDB.class);
 
         ArrayList<Record> records = myDB.getBestScore();
@@ -70,7 +73,7 @@ public class TopTenActivity extends AppCompatActivity {
             @Override
             public void recordItemClicked(Record item, String lat, String lot) {
                     Log.d("pttt", "positioncccc");
-                    fragmentMap.setOnMap("2.3","53.354");
+                    fragmentMap.setOnMap(lat,lot);
 
             }
         });

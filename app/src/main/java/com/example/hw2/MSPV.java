@@ -3,26 +3,26 @@ package com.example.hw2;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class MSPV3 {
+public class MSPV {
 
-    private final String SP_FILE = "SP_FILE1";
+    private final String SP_FILE = "SP_FILE2";
 
 
 
-    private static MSPV3 me;
+    private static MSPV me;
     private SharedPreferences sharedPreferences;
 
-    public static MSPV3 getMe() {
+    public static MSPV getMe() {
         return me;
     }
 
-    private MSPV3(Context context) {
+    private MSPV(Context context) {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
     }
 
-    public static MSPV3 initHelper(Context context) {
+    public static MSPV initHelper(Context context) {
         if (me == null) {
-            me = new MSPV3(context);
+            me = new MSPV(context);
         }
         return me;
     }

@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton easyButton;
     private MaterialButton hardButtun;
     private MaterialButton topTen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

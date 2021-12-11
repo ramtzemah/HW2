@@ -15,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -81,6 +82,8 @@ public class Fragment_Map extends Fragment {
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                 latLng,10
         ));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.darth_vader));
+
         mMap.addMarker(markerOptions);
     }
 }
