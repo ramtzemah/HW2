@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // checkPermissions();
+
+        checkPermissions();
         findViews();
         easyButton.setOnClickListener(new View.OnClickListener() {
             @Override
