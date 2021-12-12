@@ -54,6 +54,7 @@ public class TheGameActivity extends AppCompatActivity {
     private static MyDB myDB;
     private String strlot = "";
     private String strlat = "";
+    private int helper = 0;
     private float x = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -81,17 +82,6 @@ public class TheGameActivity extends AppCompatActivity {
         }
 
 
-
-//        SensorClass.CallBack_Move callBack_move = new SensorClass.CallBack_Move() {
-//            @Override
-//            public void dataReady(float t) {
-//                Log.d("pttt", "Moooooodel: "  + " Thread: " + Thread.currentThread().getName());
-//                x=t;
-//                move(x);
-//            }
-//        };
-//        SensorClass sensorClass =  new SensorClass(this);
-//        sensorClass.move(callBack_move);
 
 
         LocationInCoordinate.CallBack_Loc callBack_loc = new LocationInCoordinate.CallBack_Loc() {
@@ -129,6 +119,7 @@ public class TheGameActivity extends AppCompatActivity {
         panel_IMG_lView.setVisibility(View.INVISIBLE);
         panel_IMG_rArrow.setVisibility(View.INVISIBLE);
         panel_IMG_rView.setVisibility(View.INVISIBLE);
+        panel_IMG_speed.setVisibility(View.INVISIBLE);
         initSensor();
     }
 
@@ -137,34 +128,12 @@ public class TheGameActivity extends AppCompatActivity {
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
-//    private void move(float x){
-//        for (int i = 0; i < SIZEOFROUTE; i++) {
-//                    rocketRoute[i] = 0;
-//                    rocketArray[i].setVisibility(View.INVISIBLE);
-//                }
-//                if (x >= 6) {
-//                    rocketRoute[0] = 1;
-//                } else if (x >= 2 && x < 6) {
-//                    rocketRoute[1] = 1;
-//                } else if (x <= 2 && x >= -2) {
-//                    rocketRoute[2] = 1;
-//                } else if (x > -6 && x < -2) {
-//                    rocketRoute[3] = 1;
-//                } else {
-//                    rocketRoute[4] = 1;
-//                }
-//                for (int i = 0; i < SIZEOFROUTE; i++) {
-//                    if (rocketRoute[i] == 1) {
-//                        rocketArray[i].setVisibility(View.VISIBLE);
-//                    }
-//                }
-//    }
-
     private SensorEventListener accSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (game_type.equals("1")) {
                 DecimalFormat df = new DecimalFormat("##");
+                float y = event.values[1];
                 float x = event.values[0];
                 x = Float.parseFloat(df.format(x));
                 for (int i = 0; i < SIZEOFROUTE; i++) {
@@ -186,6 +155,20 @@ public class TheGameActivity extends AppCompatActivity {
                     if (rocketRoute[i] == 1) {
                         rocketArray[i].setVisibility(View.VISIBLE);
                     }
+                }
+
+
+                if (y >= 4 && helper ==1) {
+                    ts.cancel();
+                    setDelay(750);
+                    Log.d("pttt","slowwww"+DELAY);
+                    helper =0;
+                }else if(y>4 && helper ==0){
+                    ts.cancel();
+                    setDelay(250);
+                    helper = 1;
+                    Log.d("pttt","fasttt"+ DELAY);
+
                 }
             }
         }
@@ -296,7 +279,7 @@ public class TheGameActivity extends AppCompatActivity {
     }
 
     private void addPoint(int i) {
-        //  sound();
+         sound();
         if (vals[SIZEOFROWS - 1][i] == 4) {
             score += 100;
         } else
@@ -310,7 +293,7 @@ public class TheGameActivity extends AppCompatActivity {
     }
 
     private void heartCount() {
-        //vibrate();
+        vibrate();
         if (panel_IMG_heart1.getVisibility() == View.VISIBLE) {
             panel_IMG_heart1.setVisibility(View.INVISIBLE);
         } else if (panel_IMG_heart2.getVisibility() == View.VISIBLE) {
