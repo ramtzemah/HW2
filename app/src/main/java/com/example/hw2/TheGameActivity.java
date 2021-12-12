@@ -94,6 +94,10 @@ public class TheGameActivity extends AppCompatActivity {
         LocationInCoordinate locationInCoordinate =  new LocationInCoordinate(this);
         locationInCoordinate.getLastLocation(callBack_loc);
 
+        if(strlot==""||strlat==""){
+            strlot = "40";
+            strlat = "40";
+        }
         panel_IMG_speed.setOnClickListener(v -> {
 
             counter++;
