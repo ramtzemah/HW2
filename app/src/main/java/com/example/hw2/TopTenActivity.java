@@ -52,8 +52,14 @@ public class TopTenActivity extends AppCompatActivity {
 //        android:src="@drawable/background2"/>
         String js = MSPV.getMe().getString("MY_DB", "");
         MyDB myDB = new Gson().fromJson(js, MyDB.class);
-
-        ArrayList<Record> records = myDB.getBestScore();
+        if (myDB!=null){
+             records = myDB.getBestScore();
+        }
+//        if(myDB.getBestScore()!=null){
+//            ArrayList<Record> records = myDB.getBestScore();
+//        } else {
+//            ArrayList<Record> records=new ArrayList<>();
+//        }
 
         adapter_record = new Adapter_Record(this, records);
 

@@ -51,6 +51,9 @@ public class Adapter_Record<recordItemClickListener> extends RecyclerView.Adapte
 
     @Override
     public int getItemCount() {
+        if (records==null){
+            return 0;
+        }
         return records.size();
     }
 
