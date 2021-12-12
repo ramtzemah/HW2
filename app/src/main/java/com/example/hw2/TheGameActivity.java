@@ -283,7 +283,7 @@ public class TheGameActivity extends AppCompatActivity {
     }
 
     private void addPoint(int i) {
-        // sound();
+         sound();
         if (vals[SIZEOFROWS - 1][i] == 4) {
             score += 100;
         } else
@@ -297,7 +297,7 @@ public class TheGameActivity extends AppCompatActivity {
     }
 
     private void heartCount() {
-      //  vibrate();
+        vibrate();
         if (panel_IMG_heart1.getVisibility() == View.VISIBLE) {
             panel_IMG_heart1.setVisibility(View.INVISIBLE);
         } else if (panel_IMG_heart2.getVisibility() == View.VISIBLE) {
