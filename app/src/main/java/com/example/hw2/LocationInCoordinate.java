@@ -46,6 +46,7 @@ public class LocationInCoordinate{
     public LocationInCoordinate(TheGameActivity theGameActivity) {
         activity = theGameActivity;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(theGameActivity);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
